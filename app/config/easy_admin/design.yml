@@ -1,0 +1,34 @@
+easy_admin:
+    design:
+        form_theme: 'vertical'
+        brand_color: '#1879be'
+        templates:
+            show: '@EasyAdminExtension/default/show_vertical.html.twig'
+            label_null: 'easy_admin\label_null.html.twig'
+            menu: 'easy_admin\menu.html.twig'
+        # assets:
+        #     js:
+        #         - 'build/js/easy_admin.js'
+        menu:
+            - { label: 'Panel Principal', route: 'dashboard', icon: 'caret-down', default: true }
+            - label: 'Prensa'
+              # icon: 'newspaper'
+              children:
+                - {label: 'Noticias' , entity: 'Noticia', icon: 'indent' }
+                - {label: 'Videos' , entity: 'Video', icon: 'indent' }
+                - {label: 'Tags' , entity: 'Tag' , icon: 'indent' }
+            - {label: 'Video en vivo' , entity: 'VideoEnVivo', icon: 'indent' }
+            - {label: 'Horarios' , entity: 'Horario', icon: 'indent' }
+            - {label: 'Programa' , entity: 'Programa', icon: 'indent'}
+            - {label: 'Capitulos' , entity: 'Capitulo', icon: 'indent' }
+            - label: 'Radio'
+              # icon: 'newspaper'
+              children:
+                - {label: 'Programas' , entity: 'Programa_radio', icon: 'indent' , default: true}
+                - {label: 'Horarios' , entity: 'Horario_radio', icon: 'indent' }
+            - label: 'Usuarios'
+              icon: 'users'
+              children:
+                  - { label: 'Usuarios', entity: 'User'}
+                  - { label: 'Grupos' , entity: 'Group' }
+

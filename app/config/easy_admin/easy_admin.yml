@@ -1,0 +1,14 @@
+# easy_admin_extension:
+#     minimum_role: ROLE_PAGINA
+
+easy_admin:
+    site_name: '<div><img src="/assets/backend/logo_chacotv.png" /><img style="max-height:30px; max-width:150px;" src="/assets/backend/logo_ecom.png" /></div>'
+    list:
+        actions:
+            - { name: 'show', icon: 'search', label: 'Mostrar', title: 'Search' }
+            - { name: 'edit', icon: 'pencil', label: 'Editar' }
+            - { name: 'delete', icon: 'ban', label: 'Eliminar'}
+    formats:
+        date:     'd/m/Y'
+        time:     'H:i'
+        datetime: 'd/m/Y H:i:s'

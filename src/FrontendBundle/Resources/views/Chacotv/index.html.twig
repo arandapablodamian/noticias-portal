@@ -1,0 +1,327 @@
+{% extends 'FrontendBundle:Chacotv:frontend.html.twig' %}
+
+{% block stylesheets %}
+	{{ parent() }}
+
+	<style>
+		.banner{
+			color:white;
+			text-decoration:none;
+		}
+		.banner :hover{
+			color:white;
+			text-decoration:none;
+		}
+		.banner:link {
+			color:white;
+			text-decoration:none;
+		}
+		.videoYoutube iframe {
+			width: 100%;
+			height: 200px;
+		}
+		.noticialink :hover{
+			color: #7e7f7b;
+		}
+		.carrouselYoutube iframe {
+			max-width: 390px;
+			max-height: 250px;
+		}
+	</style>
+
+	<link rel="stylesheet" href="{{asset('assets/frontend/css/owl.carousel.min.css')}}">
+	<link rel="stylesheet" href="{{asset('assets/frontend/css/owl.theme.default.min.css')}}">
+	<link rel="stylesheet" href="{{asset('assets/frontend/css/morphext.css')}}">
+{% endblock %}
+
+{% block content %}
+<div id="banner">
+	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" >
+		<div class="carousel-inner" role="listbox" >
+		{% set cantBanner = 1 %}
+		{% for dest in destacadas %}
+			<div class="carousel-item {% if cantBanner == 1 %} active {% endif %}">
+				<a href="{{path('detalleNoticia',{'id':dest.id})}}">
+				<div style="background-color:{{dest.color}};color:white;min-height:350px;">
+					<div class="container" style="padding: 15px 40px;">
+						<div class="row">
+							<div class="col-md-7 col-sm-6">
+								<div>
+									<br>
+									<h6>{{dest.fechaCreacion | date('d/m/Y')}}</h6>
+								</div>
+								<div>
+									<br>
+									<h1 style="
+										font-size: 40px;
+										letter-spacing: 1px;
+										line-height: 40px;
+									">{{ dest.titulo|raw }}</h1>
+								</div>
+								<div>
+									<br>
+									<p>{{dest.bajada|raw}}</p>
+								</div>
+							</div>
+							<div class="col-md-5 col-sm-6">
+								{% if dest.principal=='Video' %}
+									<div style='width: 100%;height: auto; margin-top: 10%;'>
+										{{ dest.urlVideo|raw }}
+									</div>
+								{% else %}
+									<div style="
+										background: url({{ asset('uploads/noticias/'~dest.imagen) }});
+										background-position: center;
+										background-size: cover;
+										width: 100%;
+										height: 250px;
+										margin-top: 30px;
+									">
+									</div>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+				</a>
+			</div>
+			{% set cantBanner = cantBanner + 1 %}
+		{% endfor %}
+		</div>
+		<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+</div>
+
+{% if slides|length > 0 %}
+	<div id="slidesBanner" style="background-color:#bf0811;display:none;">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12" style="text-align:center;">
+					<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" >
+						<div class="carousel-inner" role="listbox" >
+						{% set cantBanner = 1 %}
+						{% for slide in slides %}
+							<div class="carousel-item {% if cantBanner == 1 %} active {% endif %}">
+								<a href="{{path('detalleNoticia',{'id':slide.id})}}">
+									<h1 style="
+										    color: #fff;
+											padding: 8px 0px;
+											font-size: 30px;
+									">AHORA: {{ slide.titulo|raw }}</h1>
+								</a>
+							</div>
+							{% set cantBanner = cantBanner + 1 %}
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endif %}
+	<br>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12" >
+			<div style="font-size: 20px;background-color:#3c3c3c; color:#fff; padding: 5px; margin-bottom: 15px;" >
+				<strong>NOTICIAS</strong>
+			</div>
+			<form class="form-inline mb-3 float-right" action="{{ path('busqueda') }}" method="POST">
+				<input 
+					class="form-control form-control-sm mr-sm-2" 
+					name="search_query" 
+					type="search" 
+					placeholder="Buscar noticias" 
+					aria-label="Search"
+					value="{{ search_query |default('') }}"
+				>
+				<button class="btn btn-sm my-2 my-sm-0" type="submit">
+					<i class="fas fa-search"></i>
+				</button>
+			</form>
+		</div>
+	</div>
+</div>
+<div  class="container">
+	<div class="row">
+		<div class="col-md-10">
+			<div class="row">
+				{% set nroVideo=0 %}
+				{% set noticiaFila=1 %}
+				{% set noticiaColumna=0 %}
+				{% set turnoVideo=true %}
+		
+				{% for noticia in noticias %}
+					{% if noticiaColumna==3 %}
+						{% if noticiaFila is divisible by(3) %}
+							</div>
+							<div class="row" style="background-color:#e3e3e3; min-height:300px;padding-top:25px;">
+								{% if turnoVideo %}
+									{% set ultimoVideo=nroVideo+2 %}
+									{% if videos[nroVideo] is defined %}
+										{% for i in nroVideo..ultimoVideo %}
+											{% if videos[i] is defined %}
+												<div class="col-md-4" >
+													<div  class="videoYoutube" style="height:200px;max-width:100%;">
+														<div >{{videos[i].urlVideo|raw}}</div>
+													</div>                     
+												</div>
+											{% endif %}
+										{% endfor %}
+										{% set nroVideo=nroVideo+2 %}
+										</div>
+										<br>
+										<div class="row">
+									{% else %}
+										{% set noticiaFila=noticiaFila+1 %}
+									{% endif %}
+									{% set turnoVideo=false %}
+							{% else %}
+								{% set turnoVideo=true %}
+								{% set noticiaFila=noticiaFila+1 %}
+							{% endif %}
+						{% else %}
+							{% set turnoVideo=true %}
+							{% set noticiaFila=noticiaFila+1 %}
+							</div>
+							<br>
+							<div class="row">
+						{% endif %}
+		
+						{% set noticiaColumna=0 %}
+					{% endif %}
+		
+					<div class="col-md-4" >
+						<div>
+							<div>
+									&nbsp <i class="fas fa-tags">
+									</i>
+									{% for tag in noticia.tags %}
+										&nbsp{{tag.tag ~ ' '}}
+									{% endfor %}
+								</div>
+							<a href="{{path('detalleNoticia',{'id':noticia.id})}}" class="noticialink">
+								<div style="">
+		
+									<div style="padding:7px;" >
+		
+										<div style="max-height:250px;">
+											{% if noticia.principal=='Video' %}
+												<div  class="videoYoutube" style="height:200px;max-width:100%;">
+															{{noticia.urlVideo | raw }}
+												</div>
+		
+											{% else %}
+												{% if noticia.imagen %}
+		
+												<img class="imagen-noticia" src="{{asset('uploads/noticias/'~noticia.imagen)}}" alt="">
+		
+												{% endif %}
+											{% endif %}
+										</div>
+										<div >
+										<div style=" font-size: 13px">
+											{{noticia.fechaCreacion| date('d/m/Y')}}
+										</div>
+										<hr>
+										</div>
+									<div >
+										<strong >
+										<div style=" font-size: 17px">
+											
+											{{noticia.titulo|raw}}
+										
+										</div>
+		
+										</strong>
+									</div>
+									<br>
+									<div >
+										<div style=" font-size: 12px">
+										
+											{{noticia.bajada|raw}}
+										
+										</div>
+									</div>
+								</div>
+								</div>
+								<br>
+							</a>
+						</div>
+					</div>
+					{% set noticiaColumna=noticiaColumna+1 %}
+				{% endfor %}
+				</div>
+				</div>
+				<br>
+				
+		
+	
+		<div class="col-md-2">
+			<a class="twitter-timeline" href="https://twitter.com/ChacoTv?ref_src=twsrc%5Etfw">Tweets by ChacoTv</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+		</div>
+	</div>
+</div>
+	
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+
+	<script src="{{asset('assets/frontend/js/owl.carousel.js')}}"></script>
+	<script src="{{asset('assets/frontend/js/morphext.min.js')}}"></script>
+	<script>
+	//animacion para el slider debajo del banner
+		$("#js-rotating").Morphext({
+			animation: "flipInX",
+			separator: "|",
+			speed: 5000,
+			complete: function () {
+			}
+		});
+		//ahora muestro el banner
+		document.getElementById("slidesBanner").style.display='block';
+	</script>
+	<script>
+		$('.owl-carousel').owlCarousel({
+			items:3,
+			merge:true,
+			loop:true,
+			margin:0,
+			video:true,
+			lazyLoad:true,
+			center:true,
+			responsive:{
+				200:{
+					items:3
+				},
+				200:{
+					items:3
+				}
+			}
+		})
+		</script>
+	<script>
+	!function(a){a.fn.datepicker.dates.es={days:["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"],daysShort:["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"],daysMin:["Do","Lu","Ma","Mi","Ju","Vi","Sa"],months:["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],monthsShort:["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"],today:"Hoy",monthsTitle:"Meses",clear:"Borrar",weekStart:1,format:"dd/mm/yyyy"}}(jQuery);
+		$(document).ready(function() {
+		// you may need to change this code if you are not using Bootstrap Datepicker
+		$('.js-datepicker').datepicker({
+			format: 'dd/mm/yyyy',
+
+			autoclose: true,
+			endDate: '+0d', // there's no convenient "right now" notation yet,
+			language: 'es'
+		});
+	});
+	</script>
+
+{% endblock %}

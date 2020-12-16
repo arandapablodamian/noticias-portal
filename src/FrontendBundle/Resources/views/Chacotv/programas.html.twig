@@ -1,0 +1,166 @@
+{% extends 'FrontendBundle:Chacotv:frontend.html.twig' %}
+
+{% block stylesheets %}
+	{{ parent() }}
+
+	<style>
+	.banner{
+		color          : white;
+		text-decoration: none;
+	}
+	.banner :hover{
+		color          : white;
+		text-decoration: none;
+	}
+	.banner:link {
+		color          : white;
+		text-decoration: none;
+	}
+
+	.programa :hover{
+		color: #7e7f7b;
+	}
+
+	.modal{
+		margin-left : auto;
+		margin-right: auto;
+		padding     : 0 !important;
+
+	}
+	.modal-dialog {
+		max-width: 100% !important;
+		height   : 100%;
+		padding  : 0;
+		margin   : 0;
+	
+	}
+
+	.modal-content {
+		border-radius: 0 !important;
+		height       : 100%;
+		
+	}
+	</style>
+{% endblock %}
+{% block content %}
+<div class="container">
+<div class="row">
+	<div class="col-md-9">
+		
+		<div style="
+			background-color:#3c3c3c;
+			color:white;
+			padding: 15px;
+			margin: 30px 0px;
+			">
+				<div style="font-size: 20px;" >
+					<strong>PROGRAMAS</strong>
+				</div>
+		</div>
+		<div id=="wrapper">
+			<div class="row">
+				{% for programa in programas %}
+				<div class="col-md-4 col-xs-6 col-sm-6" onclick="bannerPrograma({{ programa.id }})">
+					<a class="programa">
+						<div style="background-color: #f3f0f0;min-height:250px;margin: 15px 0px; border: 1px solid #e8e8e8; cursor: pointer;">
+							<div style="
+								width:100%;
+								width:100%;
+								height: 140px;
+								background-image: url({{ asset('uploads/programas/' ~ programa.imagen) }});
+								background-position: center;
+								background-size: cover;
+							">
+							</div>
+							<br>
+							<div style="padding: 10px;letter-spacing: -0.2px;">
+								{{ programa.titulo|raw }}
+							</div>
+
+							<div id="programaTitulo{{ programa.id }}" style="display:none;">
+								{{ programa.titulo|raw }}
+							</div>
+							<div id="programaResumen{{ programa.id }}" style="display:none;">
+								{{ programa.resumen|raw }}
+							</div>
+							<div id="programaHorario{{ programa.id }}" style="display:none">
+								{{ programa.horario|raw }}
+							</div>
+							<div id="programaImagen{{ programa.id }}" style="display:none">
+								{{ asset('uploads/programas/' ~ programa.imagen) }}
+							</div>
+						</div>
+					</a>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+		<div class="modal modal-lg" id="modal_programa" tabindex="-1" >
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header" style="background-color:#1e1e1e;">
+						<h5 class="modal-title" id="modal_title"></h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body" style="background-color:#51b072;color:white;">
+						<div class="row" style="margin-left:auto; margin-right:auto;margin-top:3%;">
+							<div class="col-md-6">
+								<h6><div id="modal_horario"></div></h6>
+								<h3><div id="modal_titulo"></div></h3>
+								<h5><div id="modal_resumen"></div></h5>
+							</div>
+							<div class="col-md-5">
+								<img id="modal_imagen" style="max-width:100%;height:auto; margin-right:auto;margin-left:auto;" src="" alt="Nature">
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer" style="background-color:#1e1e1e;">
+						<button type="button" class="btn btn-info" data-dismiss="modal">Cerrar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- HORARIOS -->
+	<div class="col-md-3">
+		<div style="
+			background-color:#3c3c3c;
+			color:white;
+			padding: 15px;
+			margin: 30px 0px;
+			">
+				<div style="font-size: 20px;" >
+					<strong>HORARIOS</strong>
+				</div>
+		</div>
+		<a href="{{ path('horarios') }}">
+			<img src="{{asset('assets/frontend/images/grilla.png')}}" style="
+				width: 100%;
+				margin: 15px 0px 30px;
+			">
+		</a>
+	</div>
+</div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+
+	<script>
+		function bannerPrograma(idPrograma) {
+			$('#bannerHorario').html($('#programaHorario'+idPrograma).html());
+			$('#bannerTitulo').html($('#programaTitulo'+idPrograma).html());
+			$('#bannerResumen').html($('#programaResumen'+idPrograma).html());
+			$("#bannerImagen").attr("src",$('#programaImagen'+idPrograma).html());
+			//ahora seteo los campos de la ventana modal con la info del programa
+			$('#modal_horario').html($('#programaHorario'+idPrograma).html());
+			$('#modal_titulo').html($('#programaTitulo'+idPrograma).html());
+			$('#modal_resumen').html($('#programaResumen'+idPrograma).html());
+			$("#modal_imagen").attr("src",$('#programaImagen'+idPrograma).html());
+			$('#modal_programa').modal('show');
+		}
+	</script>
+{% endblock %}

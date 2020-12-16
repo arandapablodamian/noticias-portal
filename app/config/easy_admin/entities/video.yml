@@ -1,0 +1,45 @@
+easy_admin:
+    entities:
+        Video:
+            class: BackendBundle\Entity\Video
+            label: 'Videos'
+            role: ROLE_VIDEO
+            # role_prefix: ROLE_PAGINA
+            # help: 'Global message displayed in all views'
+            list:
+                title: "Videos"
+                fields:
+                    - id
+                    - { property: 'publicado' , label: 'Publicado', type: 'toggle'}
+                    - { property: 'destacada' , label: 'Destacada', type: 'toggle'}
+                    - { property: 'titulo' , label: 'Título', type: 'text'}
+                    - { property: 'urlVideo' , label: 'Video'}
+                    - { property: 'fechaCreacion', label: 'Creación', type: 'date' }
+                    - { property: 'fechaModificacion', label: 'Modificación', type: 'date'}
+            form:  # <-- 'form' is applied to both 'new' and 'edit' views
+                title: 'Crear un Video'
+                fields: 
+                    - { type: 'group', css_class: 'col-sm-12', label: 'Encabezado' }
+                    - { property: publicado, css_class: 'col-md-4'}
+                    - { type: 'divider' }
+                    - { property: 'destacada' , label: 'Destacada',css_class: 'col-md-4'}
+                    - { type: 'divider' }
+                    - { property: 'titulo',label: 'Título', css_class: 'col-md-5'}
+                    - { property: mostrarTitulo ,label: 'Mostrar Título' , css_class: 'col-md-4'}
+                    - { type: 'group', css_class: 'col-sm-12', label: "Contenido del Video" }
+                    - { property: 'urlVideo' , label: 'Video'}
+                    - { property: 'desarrollo', type: "ckeditor"}
+                    - { type: 'group', css_class: 'col-sm-12', label: "Tags" }
+            show:
+                fields:
+                    - id
+                    - { property: 'titulo', label: 'Título' , css_class: 'col-md-8 '}
+                    - { property: 'publicado' , label: 'Publicado', type: 'toggle', css_class: 'col-md-4'}
+                    - { property: 'destacada' , label: 'Destacada'}
+                    - { property: 'mostrarTitulo', label: 'Mostrar Título', type: 'toggle', css_class: 'col-md-4'}
+                    - { property: 'urlVideo' , label: 'Video'}
+                    - { property: 'desarrollo', type: "text", css_class: 'col-md-12'}
+                    - { property: 'fechaCreacion', label: 'Creación', type: 'date', css_class: 'col-md-4' }
+                    - { property: 'fechaModificacion', label: 'Modificación', type: 'date', css_class: 'col-md-4'}
+            edit:
+                title: 'Editar Video'

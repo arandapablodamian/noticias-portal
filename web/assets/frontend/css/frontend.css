@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800');
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+a{
+color:black;
+text-decoration:none;
+}
+a :hover{
+color:black;
+text-decoration:none;
+}
+a:link {
+	color:black;
+text-decoration:none;
+}
+
+.navbar {
+/* Set the navbar to fixed position */
+	top: 0; /* Position the navbar at the top of the page */
+	z-index:5;
+}
+
+@media all and (max-width: 765px) {
+	.espacio_arriba{
+		height: 100px;
+	}
+}
+
+@media all and (max-width: 575px) {
+	.espacio_arriba{
+		height:170px;
+	}
+	.intermedio{
+		display:none;
+	}
+	.top-icono{
+		margin-top:30%;
+	}
+}
+@media all and (min-width: 768px) {
+	.espacio_arriba{
+		height: 190px;
+	}
+	.top-icono{
+		margin-top:7%;
+	}
+}
+/* Estilos para el template */
+.header {
+	width:100%;
+	overflow: hidden;
+	position: fixed;
+	z-index:999;
+	top: 0px;
+}
+
+.linea_dia{
+	background-color:#1879be;
+}
+
+.linea_dia_radio {
+	background: #35a959;
+}
+.contenido_dia{
+	background-color:#282828; 
+	color:white;
+	width:100%;
+}
+.dia{
+	width:80%;
+	margin-left:auto; 
+	margin-right:auto;
+	font-size:10px;
+}
+.menu_elem{
+	text-align:center;
+	padding-top:0px;
+	padding-bottom:0px;
+	margin-top:0px;
+	margin-bottom:0px;
+}
+
+.en_vivo {
+    
+    
+}
+.en_vivo a {
+	background: #bd0c16;
+    font-weight: 700;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    display: block;
+    padding-top: 25px;
+}
+
+.en_vivo a:hover {
+	color: #f7e01f;
+	background: #e4474d;
+}
+
+.radiofm{
+	display: inline-block;
+	margin-top: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+/* en la pagina de chaco tv */
+#logo_chacotv {
+	width: 200px;
+	/* -webkit-transition: all 0.4s ease;
+	transition: all 0.4s ease; */
+}
+#logo_radio {
+	width: 100px;
+    margin-top: 5px;
+
+}
+#logo_chacotv.sticky {
+	width:120px;
+}
+#logo_radio.sticky {
+	width:120px;
+	margin-left: 15px; 
+}
+#barra_menu{
+	font-size:20px;
+	-webkit-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+}
+
+#barra_menu.sticky{
+	font-size:15px;
+	-webkit-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+}
+/* en la pagina de la radio */
+
+#logo_chacotv_r{
+	width: 140px;
+}
+
+#logo_radio_r {
+	width: 90px;
+}
+#logo_chacotv_r.sticky {
+	width:150px;	
+}
+
+.en_vivo {
+    cursor: pointer;
+}
+
+.botones {
+    position: absolute;
+    top: 10px;
+    right: -20px;
+    width: 30px;
+	color: #191919;
+	display: none;
+	z-index: 9999;
+}
+
+.boton:hover {
+    background: #4fd077;
+    border-radius: 5px;
+}
+
+footer {
+	background: #1b1b1b;
+	color: #bfbfbf;
+	font-size: 9px;
+	font-weight: 100;
+}
+
+a.redes:hover, a.redes:hover i {
+	color: #bbbbbb;
+}
+
+a.redes {
+	color: #e2e2e2;
+	font-size: 15px;
+}
+
+h5.footer-title {
+	font-size: 18px;
+	text-align: center;
+}
+.imagen-noticia{
+	height: 150px;width:100%;object-fit: cover;
+}
+@media  (max-width: 415px) {
+	.contenedor_logo_radio{
+		display:none;
+	}
+}
+@media  (min-width: 416px) {
+	.contenedor_logo_radio{
+		display:block;
+	}
+}

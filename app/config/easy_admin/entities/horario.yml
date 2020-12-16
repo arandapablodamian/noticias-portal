@@ -1,0 +1,30 @@
+easy_admin:
+    entities:
+        Horario:
+            class: BackendBundle\Entity\Horario
+            label: 'Horario'
+            role: ROLE_HORARIO
+            easy_admin:
+            list:
+                title: "Horarios"
+                fields:
+                    - { property: 'id' , label: 'Id'}
+                    - { property: 'publicado' , label: 'Publicado', type: 'toggle'}
+                    - { property: 'titulo' , label: 'Título', type: 'text'}
+                    - { property: 'imagen', type: 'image', base_path: '%path.imagenesHorarios%' }
+            form:  # <-- 'form' is applied to both 'new' and 'edit' views
+                title: 'Crear un Esquema de Horarios'
+                fields: 
+                    - { type: 'group', css_class: 'col-sm-12', label: 'Horario' }
+                    - { property: 'publicado' , label: 'Publicado'}
+                    - { property: 'titulo' , label: 'Título', type: 'text'}
+                    - { property: 'imageFile', type: 'vich_image' , label: 'Horario'}
+            show:
+               fields:
+                    - { property: 'id' , label: 'Id'}
+                    - { property: 'publicado' , label: 'Publicado', type: 'toggle', css_class: 'col-md-12'}
+                    - { property: 'titulo' , label: 'Título', type: 'text', css_class: 'col-md-12'}
+                    - { property: 'imagen', type: 'image', base_path: '%path.imagenesHorarios%', css_class: 'col-md-12' }
+
+            edit:
+                title: 'Editar Horario'

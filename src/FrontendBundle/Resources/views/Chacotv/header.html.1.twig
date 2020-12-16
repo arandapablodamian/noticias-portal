@@ -1,0 +1,72 @@
+<div class="container">	
+	<div class="row" >
+		<div class="col-md-6 col-sm-6 col-xs-6 col-6" style="text-align:left;padding-top:0px;">
+			<a href="{{path('inicio')}}" >
+				<img id="logo_chacotv" class="img-fluid"   src="{{asset('assets/frontend/images/logo_chtv.png')}}" alt="">
+			</a>
+		</div>
+		<div class="col-md-6 col-sm-6 col-xs-6 col-6" style="text-align:right;">
+			<a class="hvr-pulse-shrink" target="_blank" href="{{path('radio')}}" >
+					<img id="logo_radio" class="img-fluid" src="{{asset('assets/frontend/images/logo_radio-01.png')}}" alt="">
+			</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 col-sm-6 col-xs-6 col-6">
+			<a class="nav-link hvr-buzz" href="{{ path('vivo') }}"><img style="margin-left:0px;height:30px;max-width:140px;" src="{{asset('assets/frontend/images/vivo.png')}}" alt=""></a>
+		</div>
+		<div class="intermedio col-md-4 col-sm-3 col-xs-1 col-1 hidden-sm hidden-xs">
+		</div>
+		<div class=" col-sm-2 col-xs-2 col-2" style="padding-left:10px;">
+			<div id="TT_Jy1gbhYhYzB78FhUjfuzjjDjDWnULYWFbYktEcioKkj"></div>
+					<script type="text/javascript" src="https://www.tutiempo.net/s-widget/l_Jy1gbhYhYzB78FhUjfuzjjDjDWnULYWFbYktEcioKkj"></script>
+			</div>
+		</div>
+	</div>
+</div> {# Fin Container #}
+
+<div style="
+	background: #fff;
+	border-bottom: 1px solid #e8e8e8;
+">
+	<div class="container">
+		
+			<nav class="navbar navbar-expand-lg navbar-light"  style="background-color:#fcfff6;;padding:0px;margin-top:0px;margin-bottom:0px;">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent" style="padding-top:0px;padding-bottom:0px;margin-top:0px;margin-bottom:0px;" >
+					<h5>
+						<ul class="navbar-nav mr-auto barra_menu" >
+							<li class="nav-item  menu_elem" >
+								<a class="nav-link" href="{{path('inicio')}}">Inicio</a>
+							</li>
+							<li class="nav-item   menu_elem"  >
+								<a class="nav-link" href="{{path('programas')}}">Programas</a>
+							</li>
+							<li class="nav-item  menu_elem " >
+								<a class="nav-link" href="{{path('capitulos')}}">Capítulos</a>
+							</li>
+							<li class="nav-item  menu_elem"  >
+								<a class="nav-link" href="{{path('contacto')}}">Contacto</a>
+							</li>
+						</ul>
+					</h5>
+				</div>
+
+				<form class="form-inline" action="{{ path('busqueda') }}" method="POST">
+					<input 
+						class="form-control mr-sm-2" 
+						name="search_query" 
+						type="search" 
+						placeholder="Buscar noticias" 
+						aria-label="Search"
+						value="{{ search_query |default('') }}"
+					>
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+				</form>
+			</nav>
+		
+	</div> {# Fin Container #}
+</div>

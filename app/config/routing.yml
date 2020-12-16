@@ -1,0 +1,37 @@
+frontend:
+    resource: "@FrontendBundle/Controller/ChacotvController.php"
+    type:     annotation
+    prefix:   /
+radio:
+    resource: "@FrontendBundle/Controller/RadioController.php"
+    type:     annotation
+    prefix:   /
+
+sistema:
+    resource: "@SistemaBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+easy_admin_bundle:
+    # resource: "@EasyAdminExtensionBundle/Controller/AdminController.php"
+    resource: '@BackendBundle/Controller/AdminController.php'
+    type:     annotation
+    prefix:   /backend
+
+backend:
+    resource: '@BackendBundle/Controller/DefaultController.php'
+    type:     annotation
+    prefix:   /
+
+
+artgris_bundle_file_manager:
+    resource: "@SistemaBundle/Controller/ManagerController.php"
+    type:     annotation
+    prefix:   /backend/manager

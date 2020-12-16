@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Title -->
+	<title>Chaco FM</title>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/png" href="{{asset('assets/general/favicon_chtv.png')}}">
+
+	{% block stylesheets %}
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{{asset('vendor/bootstrap413/css/bootstrap.min.css')}}">
+		<link rel="stylesheet" href="{{asset('assets/frontend/css/hover-min.css')}}">
+		<link rel="stylesheet" href="{{asset('assets/frontend/css/frontend.css')}}">
+		<style>
+			.banner{
+				color:white;
+				text-decoration:none;
+			}
+			.banner :hover{
+				color:white;
+				text-decoration:none;
+			}
+			.banner:link {
+				color:white;
+				text-decoration:none;
+			}
+			.programa :hover{
+				color: #7e7f7b;
+			}
+			.radiofm {
+				/* Start the shake animation and make the animation last for 0.5 seconds */
+				animation: shake 0.5s;
+				/* When the animation is finished, start again */
+				animation-iteration-count: infinite;
+			}
+
+			@keyframes shake {
+				0% { transform: translate(1px, 1px) rotate(0deg); }
+
+				50% { transform: translate(1px, 2px) rotate(-1deg); }
+
+				100% { transform: translate(1px, -2px) rotate(-1deg); }
+			}
+
+			@media all and (max-width: 765px) {
+				.espacio_arriba{
+					height: 100px;
+				}
+			}
+
+			@media all and (max-width: 575px) {
+				.espacio_arriba{
+					height:170px;
+					}
+				.intermedio{
+					display:none;
+				}
+				.top-icono{
+					margin-top:30%;
+				}
+			}
+			@media all and (min-width: 768px) {
+				.espacio_arriba{
+					height: 187px;
+				}
+			}
+		</style>
+
+		<link rel="stylesheet" href="{{asset('assets/frontend/css/owl.carousel.min.css')}}">
+		<link rel="stylesheet" href="{{asset('assets/frontend/css/owl.theme.default.min.css')}}">
+	{% endblock %}
+	<!-- jQuery -->
+</head>
+
+<body style="padding-top: 86px;">
+	{% block content %}
+
+<div id="encabezado" style="background-color:#0c88d5;color:white;">
+	<br>
+		<div class="row" style="width:80%; margin-left:auto; margin-right:auto;">
+			<div class="col-md-6">
+				<h6><div id="bannerHorario"></div></h6>
+				<h3><div id="bannerTitulo" style="text-align:center;">BLANCO SOBRE NEGRO</div></h3>
+				<h5><div id="bannerResumen">"Programa periodístico donde se analiza la realidad local y nacional con un estilo diferente."</div></h5>
+			</div>
+			<div class="col-md-5" style="text-align:center;">
+				<img  id="bannerImagen" style="width:100%;height:300px; margin-right:auto;margin-left:auto;" src="{{asset('assets/frontend/images/logoRadio.jpg')}}"  alt="Nature" >
+			</div>
+
+		</div>
+		<br>
+
+</div>
+
+	<div style="background-color:#3c3c3c;color:white;max-width:80%;;margin-left:auto;margin-right:auto; min-height:50px;margin-top:50px; margin-bottom:50px;padding-top:5px;">
+		<div style="font-size: 20px;" >
+			<strong>&nbsp&nbspPROGRAMAS</strong>
+		</div>
+</div>
+	<div id=="wrapper" style="min-height:500px;max-width:80%;;margin-left:auto;margin-right:auto;">
+	<div class="row">
+		{% for programa in programas %}
+				<div class="col-md-3 col-xs-12 col-sm-12 " onclick="bannerPrograma({{programa.id}})">
+					<a class="programa" >
+						<div  style="background-color:#faf4ee; margin-right:5px;margin-right:5px;min-height:250px;">
+						<div style="width:100%;">
+							<img   id="programaImagen{{programa.id}}" style="height:180px;width:100%;" src="{{asset('uploads/radio/programas/'~programa.imagen)}}" alt="">
+						</div>
+						<br>
+						<div style="padding-left:10px;" >
+							{{programa.titulo|raw}}
+						</div>
+						<div id="programaTitulo{{programa.id}}" style="padding-left:10px;" titulo="{{programa.titulo|raw}}">
+						</div>
+						<div  id="programaResumen{{programa.id}}" style="display:none;" resumen="{{programa.resumen|raw}}">
+						</div>
+						<div id="programaHorario{{programa.id}}" style="display:none" horario="{{programa.horario|raw}}">
+						</div>
+
+						</div>
+					</a>
+				</div>
+
+		{% endfor %}
+	</div>
+</div>
+
+<audio id="player" style="display:none;">
+	<source src="https://debred5.ecomchaco.com.ar:8443/radioecom" type="audio/mpeg">
+</audio>
+
+
+	{% endblock %}
+	{% block footer %}
+		{% include 'FrontendBundle:Chacotv:footer.html.twig' %}
+	{% endblock %}
+
+
+	{% block header %}
+	<div class="header shadow" id="header" >
+		<div class="linea_dia_radio">
+			<div class="contenido_dia">
+				<div class="dia">
+						<div class="row">
+								<div class="col-7 ">
+									{{diaString}}
+								</div>
+								<div class="col-5" style="text-align:right;margin-bottom:3px;">
+									<a href="https://www.facebook.com/chacotelevision"  target="_blank" class="redes hvr-grow">
+										<img id="facebook_icon" style="width: 20px;" src="{{asset('assets/frontend/images/facebook_icon.png')}}" alt="">
+									</a>
+									<a href="https://twitter.com/ChacoTv" target="_blank" class="redes hvr-grow">
+										<img id="twitter_icon" style="width: 17px;" src="{{asset('assets/frontend/images/twitter_icon.png')}}" alt="">
+									</a>
+									<a href="https://www.youtube.com/user/tvpublicachaco" target="_blank" class="redes hvr-grow ">
+										<img id="youtube_icon" style="width: 17px;" src="{{asset('assets/frontend/images/youtube_icon.png')}}" alt="">
+									</a>
+									<a href="https://www.instagram.com/chacotv/" target="_blank" class="redes hvr-grow">
+										<img id="instagram_icon" style="width: 17px;" src="{{asset('assets/frontend/images/instagram_icon.png')}}" alt="">
+									</a>
+								</div>
+							</div>
+				</div>
+				
+			</div>
+			
+			{% include 'FrontendBundle:Radio:header.html.twig' %}
+
+		</div>
+		
+	</div>
+
+	{% endblock %}
+
+	{% block javascripts %}
+		<script src="{{asset('assets/frontend/js/jquery-3.3.1.min.js')}}" ></script>
+		<script src="{{asset('assets/frontend/js/bootstrap.min.js')}}" ></script>
+		<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
+		<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
+
+		<script>
+
+
+			//obtengo el id del reproductor de la radio, y seteo la bandera del estado del reproductor
+			var myAudio = $("#player");
+			var isPlaying = false;
+
+			//controles del boton de la radio
+			function togglePlay() {
+
+				if (isPlaying) {
+					myAudio.trigger('pause')
+
+					$('#botones').hide( "slow" )
+					isPlaying = false;
+				} else {
+					myAudio.trigger('play');
+
+					$('#botones').show( "slow" )
+					isPlaying = true;
+				}
+
+			};
+
+			function volumeUp(){
+				var volume = $("#player").prop("volume")+0.1;
+				if(volume >1){
+					volume = 1;
+				}
+				$("#player").prop("volume",volume);
+			}
+			
+			function volumeDown(){
+				var volume = $("#player").prop("volume")-0.1;
+				if(volume <0){
+					volume = 0;
+				}
+				$("#player").prop("volume",volume);
+			}
+
+			//para que se reproduzca la radio automáticamente cuando carga la pagina
+			togglePlay() ;
+
+			//cuando haga click en el programa se actualiza la parte superior, en el banner
+			function bannerPrograma(idPrograma){
+				$('#bannerHorario').html($('#programaHorario'+idPrograma).attr( "horario" ));
+				$('#bannerTitulo').html($('#programaTitulo'+idPrograma).attr( "titulo" ));
+				$('#bannerResumen').html($('#programaResumen'+idPrograma).attr( "resumen" ));
+				$("#bannerImagen").attr("src",$('#programaImagen'+idPrograma).attr( "src" ));
+
+			}
+
+
+		</script>
+		<script>
+			
+				{# $( document ).ready(function() {
+						if ($(this).scrollTop() > 50){  
+						$('#logo_chacotv_r').addClass("sticky");
+						$('#logo_radio').addClass("sticky");
+						$('#barra_menu').addClass("sticky");
+						}
+						else{
+							$('#logo_radio').removeClass("sticky");
+							$('#logo_chacotv_r').removeClass("sticky");
+							$('#barra_menu').removeClass("sticky");
+					}
+				});
+			$(window).scroll(function() {
+				if ($(this).scrollTop() > 50){  
+						$('#logo_chacotv_r').addClass("sticky");
+						$('#logo_radio').addClass("sticky");
+						$('#barra_menu').addClass("sticky");
+				}
+				else{
+						$('#logo_radio').removeClass("sticky");
+						$('#logo_chacotv_r').removeClass("sticky");
+						$('#barra_menu').removeClass("sticky");
+				}
+			}); #}
+		</script>
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-134125683-1"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-134125683-1');
+		</script>
+
+	{% endblock %}
+</body>
+</html>

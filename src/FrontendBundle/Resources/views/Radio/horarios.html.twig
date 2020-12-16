@@ -1,0 +1,23 @@
+{% extends 'FrontendBundle:Radio:radio.html.twig' %}
+
+{% block content %}
+ 
+
+  <div id="wrapper"  style="max-width:80%;;margin-left:auto; margin-right:auto;">
+   
+    <div style="background-color:#3c3c3c;color:white;max-width:100%;;margin-left:auto;margin-right:auto; min-height:50px;margin-top:50px; margin-bottom:50px;padding-top:5px;"> 
+        <div style="font-size: 20px;" >
+          <strong>&nbsp&nbspHORARIOS</strong>
+        </div>
+    </div>
+    {% if horario %}
+      {% if horario[0] is defined %}
+          <div style="text-align:center;">
+            <img class="img-fluid" src="{{asset('uploads/radio/horarios/'~horario[0].imagen)}}" alt="">
+          </div>
+      {% endif %}
+    {% endif %}
+  </div>
+  <br><br>
+    
+{% endblock %}

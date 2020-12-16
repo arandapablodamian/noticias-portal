@@ -1,0 +1,299 @@
+{% extends 'FrontendBundle:Chacotv:frontend.html.twig' %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div style="
+        background-color:#3c3c3c;
+        color:white;
+        padding: 15px;
+        margin: 15px 0px;
+      ">
+        <div style="font-size: 20px;" >
+          <strong>HORARIOS</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-3">
+  {#
+  <table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Horarios</th>
+      <th scope="col">Lunes</th>
+      <th scope="col">Martes</th>
+      <th scope="col">Miercoles</th>
+      <th scope="col">Jueves</th>
+      <th scope="col">Viernes</th>
+      <th scope="col">Sabado</th>
+      <th scope="col">Domingo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">6:00</th>
+      <td class="bg-info">Amanecer Rural</td>
+      <td class="bg-info">Amanecer Rural</td>
+      <td class="bg-info">Amanecer Rural</td>
+      <td class="bg-info">Amanecer Rural</td>
+      <td class="bg-info">Amanecer Rural</td>
+      <td class="bg-success">Paka Paka</td>
+      <td class="bg-success">Paka Paka</td>
+    </tr>
+    <tr>
+      <th scope="row">6:30</th>
+      <td class="bg-primary">Punto de Partida</td>
+      <td class="bg-primary">Punto de Partida</td>
+      <td class="bg-primary">Punto de Partida</td>
+      <td class="bg-primary">Punto de Partida</td>
+      <td class="bg-primary">Punto de Partida</td>
+      <td class="bg-success">Paka Paka</td>
+      <td class="bg-success">Paka Paka</td>
+    </tr>
+    <tr>
+      <th scope="row">7:00</th>
+      <td class="bg-primary">Punto de Partida</td>
+      <td class="bg-primary">Punto de Partida</td>
+      <td class="bg-primary">Punto de Partida</td>
+      <td class="bg-primary">Punto de Partida</td>
+      <td class="bg-primary">Punto de Partida</td>
+      <td class="bg-success">Paka Paka</td>
+      <td class="bg-success">Paka Paka</td>
+    </tr>
+    <tr>
+      <th scope="row">7:30</th>
+      <td class="bg-primary">Punto de Partida</td>
+      <td class="bg-primary">Punto de Partida</td>
+      <td class="bg-primary">Punto de Partida</td>
+      <td class="bg-primary">Punto de Partida</td>
+      <td class="bg-primary">Punto de Partida</td>
+      <td class="bg-secondary">Amigos</td>
+      <td class="bg-secondary">Amigos</td>
+    </tr>
+    <tr>
+      <th scope="row">8:00</th>
+      <td class="bg-primary">Punto de Partida</td>
+      <td class="bg-primary">Punto de Partida</td>
+      <td class="bg-primary">Punto de Partida</td>
+      <td class="bg-primary">Punto de Partida</td>
+      <td class="bg-primary">Punto de Partida</td>
+      <td class="bg-secondary">Amigos</td>
+      <td class="bg-secondary">Amigos</td>
+    </tr>
+    <tr>
+      <th scope="row">8:30</th>
+      <td class="bg-primary">Punto de Partida</td>
+      <td class="bg-primary">Punto de Partida</td>
+      <td class="bg-primary">Punto de Partida</td>
+      <td class="bg-primary">Punto de Partida</td>
+      <td class="bg-primary">Punto de Partida</td>
+      <td class="bg-success">Paka Paka</td>
+      <td class="bg-success">Paka Paka</td>
+    </tr>
+    <tr>
+      <th scope="row">9:00</th>
+      <td class="bg-warning">Desafios</td>
+      <td class="bg-danger">El Aguante Deportivo</td>
+      <td class="bg-light">Pasan Cosas</td>
+      <td class="bg-warning">Avance Rural</td>
+      <td class="bg-danger">Contexto Global</td>
+      <td class="bg-light">El Aguante Deportivo Repe</td>
+      <td class="bg-info">Santa Misa</td>
+    </tr>
+    <tr>
+      <th scope="row">9:30</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">10:00</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">10:30</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">11:00</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">11:30</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">12:00</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">12:30</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">13:00</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">13:30</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">14:00</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">14:30</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">15:00</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">15:30</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">16:00</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">16:30</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">17:00</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">17:30</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">18:00</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">18:30</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">19:00</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">19:30</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">20:00</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">20:30</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">21:00</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">21:30</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">22:00</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">22:30</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">23:00</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">23:30</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">00:00</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+
+  </tbody>
+</table>
+#}
+    <div class="col-md-12">
+      <img src="{{asset('uploads/horarios/'~horario.imagen)}}" style="
+          width: 100%;
+      ">
+    </div>
+  </div>
+</div>
+    
+{% endblock %}
+

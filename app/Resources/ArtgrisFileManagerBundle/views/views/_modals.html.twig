@@ -1,0 +1,65 @@
+<div class="modal fade" id="js-confirm-delete" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Eliminar Archivo</h4>
+            </div>
+            <div class="modal-body">
+                Confirme Eliminar 
+            </div>
+            <div class="modal-footer">
+                {{ form_start(formDelete, {"attr" : {'class':'pull-right'}}) }}
+                {{ form_widget(formDelete, {"attr" : {'label':'Eliminar'}} ) }}
+                {{ form_end(formDelete) }}
+                <button type="button" class="btn btn-default pull-left" title="Cancelar"
+                        data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="js-confirm-rename" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            {{ form_start(formRename) }}
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Agregar Carpeta</h4>
+            </div>
+            <div class="modal-body">
+                {{ form_row(formRename.name) }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left"
+                        data-dismiss="modal">Cancelar
+                </button>
+                {{ form_row(formRename.send) }}
+            </div>
+            {{ form_end(formRename) }}
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="addFolder" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            {{ form_start(form) }}
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Agregar Carpeta</h4>
+            </div>
+            <div class="modal-body">
+                {{ form_row(form.name) }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left"
+                        data-dismiss="modal">Cancelar
+                </button>
+                {{ form_row(form.send) }}
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>

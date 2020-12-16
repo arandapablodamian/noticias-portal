@@ -1,0 +1,10 @@
+
+{% set colors = field_options.label_colors|default(['primary']) %}
+
+
+    {% for audioResource in value %}
+    <audio controls>
+        <source  src="{{asset('uploads/audios/'~audioResource.path)}}" type="audio/mpeg">   Nombre: {{audioResource.nombre}}
+    </audio>
+    <br>
+    {% endfor %}

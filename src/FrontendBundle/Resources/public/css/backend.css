@@ -1,0 +1,158 @@
+/* 
+    Document   : backend
+    Created on : May 29, 2013, 1:50:52 PM
+    Author     : rov66
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+body{
+    font-family: arial,helvetica,sans-serif !important;
+    font-size: 12px !important;
+    padding:0px !important;
+    margin:0px !important;
+}
+h1{
+    font-size: 24px !important;
+}
+
+#container{
+    width:963px;
+    height: 139px;
+/*    margin-right: auto;
+    margin-left: auto;*/
+    margin: 5px auto;
+    border: 1px solid #494949;
+}
+
+#header {
+    height: 135px;
+    border:1px solid #494949;
+}
+
+#menu {
+    height: 20px;
+    border:1px solid #494949;
+}
+
+#cuerpo {
+    min-height: 300px;
+    border:1px solid #494949;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+#footer {
+    height: 70px;
+    border:1px solid #494949;
+    background-color: #005588;
+}
+
+#menu li {
+    display: inline-block;
+    font-size: 13px;
+    height: 20px;
+    line-height: 20px;
+    margin: 0 5px;
+}
+#menu li a{
+    text-decoration: none;
+    color: #555;
+}
+/*  Tabla listado */
+.records_list{
+    margin: auto;
+    border-spacing: 0px;
+    min-width: 700px;
+}
+
+/* Tabla Show */
+.record_properties{
+    width: 750px;
+    margin: auto;
+    border-spacing: 0px;
+}
+
+.records_list tr:nth-child(2n+1), .record_properties tr:nth-child(2n+1) {
+    background-color: #FAFAFA;
+}
+.records_list tr:nth-child(2n), .record_properties tr:nth-child(2n) {
+    background-color: #FFFFFF;
+}
+
+.records_list th:first-child, .record_properties th:first-child {
+    border-left: medium none;
+}
+.record_properties th{
+    width:100px;
+    vertical-align: top;
+}
+
+.records_list th, .record_properties th {
+    background-color: #E6E7E8;
+    border-color: #C0C0C0;
+    border-style: solid;
+    border-width: 1px 0 1px 1px;
+    color: #666666;
+    font: bold 12px helvetica;
+    padding: 7px 6px 7px 10px;
+}
+
+.records_list td, .record_properties td {
+    /*background-color: #FFF;*/
+    font-family: helvetica,​arial,​verdana,​sans-serif;
+    font-size: 11px;
+    line-height: 17px;
+    border-style: solid;
+    border-width: 1px 0px;
+    border-top-color: #FAFAFA;
+    border-bottom-color: #EDEDED;
+    padding: 1px 5px 1px 8px;
+    text-align: center;
+}
+
+
+form{
+     width: 750px !important;
+     margin:auto !important;
+}
+label {
+    display: inline-block !important;
+    height: 26px !important;
+    margin-bottom: 5px !important;
+    vertical-align: middle !important;
+    width: 150px !important;
+    
+}
+label, input, button, select, textarea {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 20px;
+}
+
+input, textarea, .uneditable-input {
+    width: 580px !important;
+}
+
+.pagination {
+    font-size: 15px;
+    margin: 5px;
+    text-align: center;
+    color:#666666;
+}
+
+.pagination img{
+    vertical-align: middle;
+}
+
+.pagination .current{
+    font-weight: bold;
+}
+
+.fos_user_change_password input{
+    width: 250px !important;
+}

@@ -1,0 +1,15 @@
+<tr>
+  <td class="col-min">
+    <span class="label label-info"><i class="fa fa-pencil"></i></span>
+  </td>
+  <td>
+   Una seccion <strong>{{ log.source.typLabel }}</strong> fue actualizada por el usuario: 
+    {{ audit_blame(log.blame) }}
+  </td>
+  <td class="col-min">{{ time_diff(log.loggedAt) }}</td>
+  <td class="col-min">
+    <a class="btn btn-xs btn-link" href="{{ path('vouchedfor_audit_ui_diff', {id: log.id}) }}">
+      <i class="fa fa-search" title="Show diff"></i>
+    </a>
+  </td>
+</tr>

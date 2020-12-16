@@ -1,0 +1,76 @@
+<div style="width:100%;overflow: hidden;position: fixed;z-index:10;">
+		<div style="background-color:#35a959;min-height:120px;">
+			<div style="background-color:#282828; color:white;">
+				<div style="max-width:80%;;margin-left:auto; margin-right:auto;font-size:10px;">
+				{{diaString}}
+				</div>
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-sm-6 col-xs-6 col-6" style="text-align:left; padding-left: 15px;">
+						<a href="{{path('radio')}}" >
+							<img  id="logo_radio" class="img-fluid top-icono" src="{{asset('assets/frontend/images/logoradio2020.png')}}" alt="">
+						</a>
+					</div>
+					<div class="col-md-6 col-sm-6 col-xs-6 col-6" style="text-align:right;">
+						<a class="hvr-pulse-shrink" target="_blank" href="{{path('inicio')}}">
+							<img id="logo_chacotv_r" class="img-fluid"  src="{{asset('assets/frontend/images/logo_chtv.png')}}" alt="">
+						</a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 col-sm-6 col-xs-6 col-6">
+						<a class="nav-link hvr-buzz" href="{{path('vivo')}}"><img style="margin-left:0px;height:30px;max-width:140px;" src="{{asset('assets/frontend/images/vivo.png')}}" alt=""></a>
+					</div>
+					<div class="intermedio col-md-4 col-sm-4 col-xs-1 col-1 hidden-sm hidden-xs">
+					</div>
+					<div class="col-md-2 col-sm-2 col-xs-2 col-2" style="padding-rigth:0px;margin-top:5px;">
+						<div id="TT_Jy1gbhYhYzB78FhUjfuzjjDjDWnULYWFbYktEcioKkj"></div>
+						<script type="text/javascript" src="https://www.tutiempo.net/s-widget/l_Jy1gbhYhYzB78FhUjfuzjjDjDWnULYWFbYktEcioKkj"></script>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="width:100%;margin-right:auto;margin-left:auto;background-color:white;">
+			<div style="width:80%;margin-right:auto;margin-left:auto;padding:0px;margin-top:0px;margin-bottom:0px;">
+				<nav class="navbar navbar-expand-lg navbar-light"  style="background-color:#fcfff6;;padding:0px;margin-top:0px;margin-bottom:0px;">
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarSupportedContent" style="padding-top:0px;padding-bottom:0px;margin-top:0px;margin-bottom:0px;" >
+						<h5>
+							<ul class="navbar-nav mr-auto">
+								<li class="nav-item col-md-4 menu_elem" >
+								<a class="nav-link" href="{{path('radio')}}">Inicio</a>
+								</li>
+								<li class="nav-item col-md-4 menu_elem" >
+								<a class="nav-link" href="{{path('radio')}}">Programas</a>
+								</li>
+								<li class="nav-item col-md-4 menu_elem"  >
+								<a class="nav-link" href="{{path('horarios_radio')}}">Horarios</a>
+								</li>
+								<li class="nav-item col-md-5 menu_elem" >
+								</li>
+								<li class="nav-item col-md-6 menu_elem " style="
+									padding-top: 6px;
+								">
+									<img id="iconoRadio" class="radiofm" src="{{asset('assets/frontend/images/radiofm.png')}}"   onclick="togglePlay()" style="
+										cursor: pointer;
+									">
+									<i class="fas fa-fw fa-volume-down" onclick="volumeDown()" style="
+										cursor: pointer;
+									"></i>
+									<i class="fas fa-fw fa-volume-up" onclick="volumeUp()" style="
+										cursor: pointer;
+									"></i>
+								</li>
+							</ul>
+						</h5>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+	<div class="espacio_arriba" >
+		aaaaaaaa
+	</div>

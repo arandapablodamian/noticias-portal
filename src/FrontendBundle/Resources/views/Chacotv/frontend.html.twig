@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Title -->
+	<title>Chaco TV</title>
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/png" href="{{asset('assets/general/favicon_chtv.png')}}">
+	{% block meta %}
+		<!-- Mobile Browser Bar Colors -->
+		<meta name="theme-color" content="#2D94CB">
+		<meta name="msapplication-navbutton-color" content="#2D94CB">
+		<meta name="apple-mobile-web-app-status-bar-style" content="#2D94CB">
+	{% endblock  %}
+
+	{% block stylesheets %}
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{{asset('vendor/bootstrap413/css/bootstrap.min.css')}}">
+		<link rel="stylesheet" href="{{asset('vendor/fontawesome5/css/all.min.css')}}">
+		<link rel="stylesheet" href="{{asset('assets/frontend/css/hover-min.css')}}">
+		<link rel="stylesheet" href="{{asset('assets/frontend/css/bootstrap-datepicker.css')}}">
+		<link rel="stylesheet" href="{{asset('assets/frontend/css/frontend.css')}}">
+	{% endblock %}
+	<!-- jQuery -->
+</head>
+<body style="padding-top: 90px;">
+	{% block content %}
+
+	{% endblock %}
+
+	{% block footer %}
+		{% include 'FrontendBundle:Chacotv:footer.html.twig' %}
+	{% endblock %}
+
+	{% block header %}
+	<div class="header shadow" id="header" >
+		<div class="linea_dia">
+			<div class="contenido_dia">
+				<div class="dia">
+					<div class="row">
+						<div class="col-7 ">
+							{{diaString}}
+						</div>
+						<div class="col-5" style="text-align:right;margin-bottom:3px;">
+							<a href="https://www.facebook.com/chacotelevision"  target="_blank" class="redes hvr-grow">
+								<img id="facebook_icon" style="width: 20px;" src="{{asset('assets/frontend/images/facebook_icon.png')}}" alt="">
+							</a>
+							<a href="https://twitter.com/ChacoTv" target="_blank" class="redes hvr-grow">
+								<img id="twitter_icon" style="width: 17px;" src="{{asset('assets/frontend/images/twitter_icon.png')}}" alt="">
+							</a>
+							<a href="https://www.youtube.com/user/tvpublicachaco" target="_blank" class="redes hvr-grow ">
+								<img id="youtube_icon" style="width: 17px;" src="{{asset('assets/frontend/images/youtube_icon.png')}}" alt="">
+							</a>
+							<a href="https://www.instagram.com/chacotv/" target="_blank" class="redes hvr-grow">
+								<img id="instagram_icon" style="width: 17px;" src="{{asset('assets/frontend/images/instagram_icon.png')}}" alt="">
+							</a>
+						</div>
+					</div>
+					
+				</div>
+				
+			</div>
+
+			{% include 'FrontendBundle:Chacotv:header.html.twig' %}
+		</div>
+	</div>
+	{% endblock %}
+
+	{% block javascripts %}
+		<script src="{{asset('assets/frontend/js/jquery-3.3.1.min.js')}}" ></script>
+		<script src="{{asset('assets/frontend/js/bootstrap.min.js')}}" ></script>
+		<script src="{{asset('assets/frontend/js/bootstrap-datepicker.js')}}" ></script>
+		<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
+		<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-134125683-1"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-134125683-1');
+		</script>
+	{% endblock %}
+</body>
+</html>

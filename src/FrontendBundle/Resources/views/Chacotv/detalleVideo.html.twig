@@ -1,0 +1,77 @@
+{% extends 'FrontendBundle:Chacotv:frontend.html.twig' %}
+{% block stylesheets %}
+    {{parent()}}
+    <link rel="stylesheet" href="{{asset('assets/frontend/css/galeria.css')}}">
+
+{% endblock %}
+{% block content %}
+  <div id="encabezado" style="min-height:500px;background-color:#51b072;color:white;">
+    <div class="row" style="width:80%;margin-left:auto; margin-right:auto;">
+        <div class="col-md-5 col-sm-4">
+          <div>
+            <br>
+            <h6>{{video.fechaCreacion|date('d/m/Y')}}</h6>
+          </div>
+          <div>
+            
+              <br>
+              <h5>{{video.volanta}}</h5>
+             
+          </div>
+          <div>
+            
+              <br>
+              <h1>{{video.titulo}}</h1>
+            
+            
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-4">
+          <div>
+            {% if video.imagen %}
+              <img style='width: 100%;max-width: 1000px;height: auto; margin-top: 10%;' src="{{asset('uploads/videos/'~video.imagen)}}" alt="">   
+            {% endif %}
+          </div>
+        </div>
+    </div>
+  </div>
+  <br>
+  <div style="width:1200px;margin-left:auto; margin-right:auto;">
+    <div id="bajada">
+      
+          <em><strong>{{video.bajada|raw}}</strong></em>
+          <hr>
+      
+      {% if video.urlVideo %}
+        <div class="text-align:center;">
+          <div style='max-width: 400px;height: auto; margin-left:auto;margin-right:auto;'>
+              {{video.urlVideo|raw }}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+    <div id="desarrollo">
+       {{video.desarrollo|raw}}
+    </div>
+    <hr>
+    
+  </div>
+{% endblock %}
+
+{% block javascripts %}
+  {{parent()}}
+    <script>
+      function openImg(imgs) {
+      // Get the expanded image
+      var expandImg = document.getElementById("expandedImg");
+      // Get the image text
+      var imgText = document.getElementById("imgtext");
+      // Use the same src in the expanded image as the image being clicked on from the grid
+      expandImg.src = imgs.src;
+      // Use the value of the alt attribute of the clickable image as text inside the expanded image
+      imgText.innerHTML = imgs.alt;
+      // Show the container element (hidden with CSS)
+      expandImg.parentElement.style.display = "block";
+    }
+    </script>
+{% endblock %}

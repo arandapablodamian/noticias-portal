@@ -1,0 +1,163 @@
+{% extends 'FrontendBundle:Chacotv:frontend.html.twig' %}
+
+{% block stylesheets %}
+	{{parent()}}
+	<style>
+	.videoYoutube iframe{
+		width: 100%;
+		height: 250px;
+		}
+	.noticialink :hover{
+		color: #7e7f7b;
+	}
+	</style>
+{% endblock %}
+
+{% block content %}
+
+
+
+<div id="wrapper"  style="max-width:80%;margin-left:auto; margin-right:auto;">
+	<div style="background-color:#e3e3e3; min-height:100px;margin-top:50px;">
+		<div class="row">
+			<div class="col-md-4"></div>
+
+		</div>
+		<div style="background-color:#3c3c3c;color:white;font-size: 20px;font-size:20px:">
+			<strong>NOTICIAS</strong>
+		</div>
+		<div style="min-height:70px;background-color:#1879be;padding:5px;">
+			<div style="padding-top:10px; margin-left:10px;color:white;">
+				{{ form_start(form,{ 'attr': {'class': 'search-form'}}) }}
+				<div class="row">
+					<div class="col-md-3 col-xs-3 col-sm-3" style="margin-top:5px;">
+							<div style="width:100px;display:inline-block;">
+								Fecha Desde :
+							</div>
+								{{ form_widget(form.fechaDesde ) }}
+						<br>
+					</div>
+				<div class="col-md-3  col-xs-3 col-sm-3" style="margin-top:5px;">
+						<div style="width:100px;display:inline-block;">
+							Fecha Hasta :
+						</div>
+							{{form_widget(form.fechaHasta) }}
+						<br>
+				</div>
+				<div class="col-md-3  col-xs-3 col-sm-3" style="margin-top:5px;">
+						<div style="width:100px;display:inline-block;">
+						Contenido :
+						</div>
+							{{form_widget(form.titulo) }}
+						<br>
+					</div>
+					<div class="col-md-3" style="text-align:center;">
+					{{ form_widget(form.enviar,{ 'attr': {'class': 'btn-success','style':'margin-top:10%;' }} )}}
+					</div>
+				</div>
+				{{ form_end(form) }}
+			</div>
+
+		</div>
+		</div>
+
+
+
+
+		{% if palabra is defined %}
+			{% if fechaDesde is defined %}
+				{% if fechaHasta is defined %}
+				<div style="background-color:#e3e3e3; min-height:50px;width:100%;; margin-bottom:50px;color:black; margin-bottom:50px;">
+				<div style="min-height:50px;background-color:#1879be;">
+					<div style="padding-top:10px; margin-left:10px;color:white;">
+						<strong>Filtro de Busqueda:</strong> <br>
+						<div class="row">
+
+							<div class="col-md-4">
+							Fecha Desde:&nbsp&nbsp{{fechaDesde}}
+							</div>
+							<div class="col-md-4">
+							Fecha Hasta:&nbsp&nbsp{{fechaHasta}}
+
+							</div>
+							<div class="col-md-4">
+							Contenido:&nbsp&nbsp{{palabra}}
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+
+				</div>
+				{% endif %}
+			{% endif %}
+		{% endif %}
+
+
+		<div style="padding-top:20px;background-color:#e3e3e3">
+			{# table body #}
+			{% for noticia in pagination %}
+				<a href="{{path('detalleNoticia', {'id':noticia.id})}}"  class="noticialink">
+					<div class="row" style="max-width:100%; background-color:#e3e3e3;margin-left:auto;margin-left:auto;">
+						<div class="col-md-5">
+						{% if noticia.principal=='Video' %}
+							<div class="videoYoutube" style="max-height:350px;width:100%;">
+								{{noticia.urlVideo | raw }}
+							</div>
+						{% else %}
+							{% if noticia.imagen %}
+								<img style="max-height:350px;width:100%;" src="{{asset('uploads/noticias/'~noticia.imagen)}}" alt="">
+							{% endif %}
+						{% endif %}
+						</div>
+						<div class="col-md-7">
+							<div >
+								{{noticia.fechaCreacion| date('d/m/Y')}}
+								<br>
+								<br>
+							</div>
+							<div>
+								<strong>
+								
+									<strong> <h3>{{noticia.titulo|raw}}</h3></strong>
+									<br>
+								
+								</strong>
+							</div>
+						<div>
+							
+								{{noticia.bajada|raw}}
+							
+						</div>
+						</div>
+					</div>
+					<br>
+				</a>
+				<hr>
+
+			{% endfor %}
+		</div>
+			{# display navigation #}
+				{{ knp_pagination_render(pagination) }}
+		</div>
+</div>
+<br><br>
+
+{% endblock %}
+{% block javascripts %}
+	{{parent()}}
+	<script>
+	!function(a){a.fn.datepicker.dates.es={days:["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"],daysShort:["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"],daysMin:["Do","Lu","Ma","Mi","Ju","Vi","Sa"],months:["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],monthsShort:["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"],today:"Hoy",monthsTitle:"Meses",clear:"Borrar",weekStart:1,format:"dd/mm/yyyy"}}(jQuery);
+		$(document).ready(function() {
+		// you may need to change this code if you are not using Bootstrap Datepicker
+		$('.js-datepicker').datepicker({
+			format: 'dd/mm/yyyy',
+
+			autoclose: true,
+			language: 'es'
+		});
+	});
+	</script>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Chaco TV</title>
+        <link>http://www.chacotv.tv</link>
+        <description>Ultimas Noticias</description>
+        <image>
+            <url>{{ absolute_url(asset('assets/frontend/images/chtv_redirect.png')) }}</url>
+            <title>Chaco TV</title>
+            <link>http://www.chacotv.tv</link>
+        </image>
+        <language>es</language>
+        {% for noticia in noticias %}
+            <item>
+                <title>{{noticia.titulo}}</title>;
+                <link>{{ url('detalleNoticia', {'id':noticia.id}) }} </link>
+                <description>
+                    {% if noticia.imagen %}
+                        <![CDATA[<img src="{{ absolute_url(asset('uploads/noticias/'~noticia.imagen)) }}" />{{ noticia.bajada }}
+                        {% if noticia.tags %}
+                            / Tags:
+                            {% for tag in noticia.tags %}
+                                #{{ tag.tag }}
+                            {% endfor %}
+                        {% endif %}]]>
+                    {% else %}
+                        <![CDATA[{{ noticia.bajada }}
+                        {% if noticia.tags %}
+                            / Tags:
+                            {% for tag in noticia.tags %}
+                                #{{ tag.tag }}
+                            {% endfor %}
+                        {% endif %}]]>
+                    {% endif %}
+                </description>";
+                <pubDate>{{ noticia.fechaCreacion|date('d/m/Y') }}</pubDate>";
+                <url></url>";
+            </item>";
+        {% endfor %}
+    </channel>
+</rss>

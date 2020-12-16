@@ -1,0 +1,59 @@
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+        Symfony\Component\Security\Core\User\User: plaintext
+
+    role_hierarchy:
+        ROLE_CHACOTV: [     ROLE_DASHBOARD,
+                            ROLE_VIDEO,
+                            ROLE_NOTICIA,
+                            ROLE_TAG,
+                            ROLE_PROGRAMA,
+                            ROLE_CAPITULO,
+                            ROLE_HORARIO,
+                            ROLE_SLIDE_TEXTO,
+                            ROLE_USUARIO,
+                            ROLE_GRUPO,
+                            ROLE_VIDEOENVIVO
+                           ]
+        ROLE_RADIO: [       ROLE_DASHBOARD_RADIO,
+                            ROLE_PROGRAMA_RADIO,
+                            ROLE_HORARIO_RADIO,
+                           ]
+        ROLE_SUPER_ADMIN:  [ROLE_CHACOTV,ROLE_RADIO]
+    providers:
+        chain_provider:
+            chain:
+                providers: [in_memory,fos_userbundle]
+        fos_userbundle:
+            id: fos_user.user_provider.username_email
+        in_memory:
+            memory:
+                users:
+                    adminecom:
+                        password: ecom159357
+                        roles: 'ROLE_SUPER_ADMIN'
+                    adminchacotv:
+                        password: chacotv159357
+                        roles: 'ROLE_SUPER_ADMIN'
+                    adminradio:
+                        password: radio852456
+                        roles: 'ROLE_SUPER_ADMIN'
+    firewalls:
+        main:
+            pattern: ^/
+            form_login:
+                provider: chain_provider
+                csrf_token_generator: security.csrf.token_manager
+                # if you are using Symfony < 2.8, use the following config instead:
+                # csrf_provider: form.csrf_provider
+
+            logout: true
+            anonymous:    true
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/dashboard, role: ROLE_SUPER_ADMIN }
+        - { path: ^/admin, role: ROLE_SUPER_ADMIN }

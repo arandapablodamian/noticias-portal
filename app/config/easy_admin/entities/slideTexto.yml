@@ -1,0 +1,24 @@
+easy_admin:
+    entities:
+        SlideTexto:
+            class: BackendBundle\Entity\SlideTexto
+            label: 'Slider'
+            role: ROLE_SLIDE_TEXTO
+            list:
+                title: "Sliders"
+                actions:
+                    - { name: 'new', label: 'Crear Slider'}
+                fields:
+                    - id
+                    - { property: 'orden', label: 'Orden' , css_class: 'col-md-3 '}
+                    - { property: 'texto' , label: 'Texto', type: 'text', css_class: 'col-md-12',template: 'easy_admin\slideTexto.html.twig'}
+
+            form:  # <-- 'form' is applied to both 'new' and 'edit' views
+                title: 'Crear una Slider'
+                fields:
+                    - { property: 'orden', label: 'Orden' , css_class: 'col-md-12 '}
+                    - { property: 'texto' , label: 'Texto', type: 'ckeditor', css_class: 'col-md-12'}
+                   
+                title: 'Mostrar Slider'
+            edit:
+                title: 'Editar Slider'

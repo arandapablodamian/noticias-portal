@@ -1,0 +1,29 @@
+easy_admin:
+    entities:
+        VideoEnVivo:
+            class: BackendBundle\Entity\VideoEnVivo
+            label: 'Video en vivo'
+            role: ROLE_VIDEOENVIVO
+            easy_admin:
+            list:
+                title: "Videos en vivo"
+                helper: "Solo se puede habilitar un video para la vista en VIVO"
+                fields:
+                    - { property: 'id' , label: 'Id'}
+                    - { property: 'habilitado' , label: 'Habilitado', type: 'toggle'}
+                    - { property: 'video' , label: 'video'}
+                    - { property: 'descripcion' , label: 'Descripción', type: 'text'}
+            
+            show:
+                fields:
+                    - { property: 'habilitado' , label: 'Habilitado'}
+                    - { property: 'video' , label: 'video'}
+                    - { property: 'descripcion' , label: 'Descripción', type: 'text'}
+
+            edit:
+                title: 'Editar Capítulo'
+                fields:
+                    - { property: 'habilitado' , label: 'Habilitado'}
+                    - { property: 'video' , label: 'video'}
+                    - { property: 'descripcion' , label: 'Descripción', type: 'text'}
+                

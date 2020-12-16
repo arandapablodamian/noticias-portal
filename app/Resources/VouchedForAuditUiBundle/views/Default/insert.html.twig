@@ -1,0 +1,15 @@
+<tr>
+  <td class="col-min">
+    <span class="label label-success"><i class="fa fa-plus"></i></span>
+  </td>
+  <td>
+    Una nueva sección <strong>{{ log.source.typLabel }}</strong> fue insertada por el usuario: 
+    {{ audit_blame(log.blame) }}
+  </td>
+  <td class="col-min">{{ log.loggedAt|date('d/m/Y') }}</td>
+  <td class="col-min">
+    <a class="btn btn-xs btn-link" href="{{ path('vouchedfor_audit_ui_diff', {id: log.id}) }}">
+      <i class="fa fa-search" title="Mostrar cambios"></i>
+    </a>
+  </td>
+</tr>

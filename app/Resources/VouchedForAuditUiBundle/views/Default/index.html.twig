@@ -1,0 +1,47 @@
+{% extends 'EasyAdminBundle:default:layout.html.twig' %}
+{% block content %}
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-3">
+                    {{ filter_search(logs, "history", "Buscar por clave primaria") }}
+                </div>
+                <div class="col-md-3">
+                    {{ filter_dropdown(logs, "blamed", users) }}
+                </div>
+                <div class="col-md-3">
+                    {{ filter_dropdown(logs, "class", sourceClasses) }}
+                </div>
+            </div>
+        </div>
+     <br><br>
+     <div style="width:800px; margin-left:auto; margin-right:auto;">
+        <table class="table">
+            <tbody >
+            <th style="background-color:black; color:white;" >
+                <td style="background-color:black; color:white;">
+                    <strong><h4>Cambios</h4></strong>
+                </td>
+                <td style="background-color:black; color:white;">   
+                    <strong><h4>Fecha</h4></strong>
+                </td>
+                <td style="background-color:black; color:white;">
+                </td>
+            </th>
+            {% for log in logs %}
+                {{ audit(log) }}
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+        <div class="panel-footer">
+            {{ pagination(logs) }}
+        </div>
+    </div>
+
+{% endblock %}
+
+

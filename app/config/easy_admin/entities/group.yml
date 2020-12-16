@@ -1,0 +1,42 @@
+easy_admin:
+    entities:
+        Group:
+            class: BackendBundle\Entity\Group
+            role: ROLE_GRUPO
+            label: 'Grupos'
+            list:
+                title: "Grupos"
+                fields:
+                    - { property: 'name', label: "Nombre",css_class: 'col-md-3' }
+                    - { property: 'descripcion' , label: "Descripción",css_class: 'col-md-5' }
+                actions:
+                    - { name: 'new', label: 'Crear Grupo'}
+            form:  # <-- 'form' is applied to both 'new' and 'edit' views
+                title: 'Crear un Grupo'
+                fields: 
+                    - { type: 'group', css_class: 'col-sm-12', label: 'Detalles' }
+                    - { property: 'name', label: "Nombre",css_class: 'col-md-3' }
+                    - { property: 'descripcion' , label: "Descripción",css_class: 'col-md-5' }
+                    - { type: 'group', css_class: 'col-md-8', label: 'Secciones' }
+                    - { property: 'roles' , label: 'Roles',css_class: 'col-md-5' ,type: 'choice', type_options: { multiple: true, choices: 
+                        {   
+                            'Noticias' :ROLE_NOTICIA,
+                            'Videos' : ROLE_VIDEO,
+                            'Slider': ROLES_SLIDE_TEXTO,
+                            'Horarios': ROLE_HORARIO,
+                            'Programas': ROLE_PROGRAMA,
+                            'Capitulos' : ROLE_CAPITULO,
+                            'Tag' : ROLE_TAG,
+                            'Video en vivo' : ROLE_VIDEOENVIVO,
+                            'Usuarios' :ROLE_USUARIO,
+                            'Grupos' : ROLE_GRUPO
+                        } }}
+            edit:
+                title: 'Editar Grupo'
+            show:
+                title: "Mostrar Grupo"
+                fields:
+                    - { property: 'name', label: "Nombre", css_class: 'col-md-12' }
+                    - { property: 'descripcion' , label: "Descripción", css_class: 'col-md-12' }
+                    - { property: 'roles' ,label: '', css_class: 'col-md-5',template: 'rolesList_field.html.twig',css_class: 'col-md-12' }
+

@@ -1,0 +1,9 @@
+# app/config/config.yml
+# you will get these parameters form https://code.google.com/apis/console/"
+happy_r_google_api:
+  application_name: LoteriaChacoAnalyst
+  oauth2_client_id: 204305933991-tf7sffkr8ks7gesf5gltv3oo0je3refo.apps.googleusercontent.com
+  oauth2_client_secret: zVesTyhyv7RA0gzpXnjYtizp
+  oauth2_redirect_uri: http://localhost/loteriach/web/app_dev.php/backend/dashboard
+  developer_key: AIzaSyDHBQZWUePQ6H4PjTDb_DQ7e0EcATavWEo
+  site_name: loteriachaco

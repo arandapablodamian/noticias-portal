@@ -1,0 +1,46 @@
+<div class="container">
+	<div class="row" style="
+		min-height: 10px;
+	">
+		<div class="col-md-3 col py-2" >
+			<a href="{{path('inicio')}}" >
+				<img id="logo_chacotv" 	src="{{asset('assets/frontend/images/logo_chtv.png')}}" alt="">
+			</a>
+		</div>
+
+		<div class="col pt-2">
+			<nav class="navbar navbar-expand-lg navbar-dark">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item" >
+								<a class="nav-link" href="{{path('inicio')}}">Inicio</a>
+						</li>
+						<li class="nav-item"  >
+							<a class="nav-link" href="{{path('programas')}}">Programas</a>
+						</li>
+						<li class="nav-item" >
+							<a class="nav-link" href="{{path('capitulos')}}">Capítulos</a>
+						</li>
+						<li class="nav-item"  >
+							<a class="nav-link" href="{{path('contacto')}}">Contacto</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+
+		<div class="col-md-2  en_vivo" >
+			<a class="text-center" href="{{ path('vivo') }}">EN VIVO</a>
+		</div>
+		<div class="col-md-2 contenedor_logo_radio" >
+			<a target="_blank" href="{{path('radio')}}" >
+				<img id="logo_radio" src="{{asset('assets/frontend/images/logoradio2020.png')}}" alt="">
+			</a>
+		</div>
+		
+	</div>
+</div>
